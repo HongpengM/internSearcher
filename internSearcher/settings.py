@@ -92,5 +92,5 @@ MONGO_DB = 'Vacancy'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-LOG_FILE = 'iqiyi.log'
-LOG_LEVEL = 'INFO'
+#LOG_FILE = 'vacancy.log'
+#LOG_LEVEL = 'INFO'

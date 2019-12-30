@@ -35,19 +35,19 @@ class MongoStoragePipeline(object):
     def process_item(self, item, spider):
         possibleDuplicate = None
         if isinstance(item, Vacancy):
-            possibleDuplicate = self.DB[item.collections].find_one({
+            possibleDuplicate = self.db[item['collections']].find_one({
                 'title': item['title'],
                 'employer': item['employer'],
                 'jd': item['jd']
             })
             if possibleDuplicate:
-                self.db[item.collections].update_one({
+                self.db[item['collections']].update_one({
                     '_id': possibleDuplicate['_id']
             }, {
-                '$set': {**dict(possibleDuplicate), **{'lastADate': datetime.now()}}
+                '$set': {**dict(possibleDuplicate), **{'lastSeenDate': datetime.now()}}
             })
             else:
-                self.db[item.collections].insert_one({**dict(item), **{'lastADate': datetime.now(), 'createdAt': datetime.now()}})
+                self.db[item['collections']].insert_one({**dict(item), **{'lastSeenDate': datetime.now(), 'createdAt': datetime.now()}})
         return item
 
     def close_spider(self, spider):

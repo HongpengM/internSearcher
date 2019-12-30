@@ -4,20 +4,23 @@ class Vacancy(Item):
 
     database = 'Vacancy'
 
+    # Collections in database 'Intern' / 'Fulltime' / 'Other'
+    collections = Field()
+    
     # In database time
     createdAt = Field()
     
     # Last available date
-    lastADate = Field()
+    lastSeenDate = Field()
 
     # ---- Above no need to fill
     #
     publishedAt = Field()
 
-    #
+    # !!MUST
     title = Field()
 
-    #
+    # !!MUST
     employer = Field()
 
     # Region of the program
@@ -26,7 +29,7 @@ class Vacancy(Item):
     # Cities of the program
     cities = Field()
 
-    # Job Description
+    # !!MUST Job Description
     jd = Field()
 
     #
@@ -40,6 +43,13 @@ class Vacancy(Item):
 
     # Length
     pLength = Field()
+
+    # Education Level
+    education = Field()
+
+
+    # business Unit
+    businessUnit = Field()
 
     #
     otherKeyInfo = Field()
